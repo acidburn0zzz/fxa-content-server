@@ -83,7 +83,6 @@ define(function (require, exports, module) {
         relier: relier,
         sessionVerificationPoll,
         user: user,
-        viewName: 'confirm',
         window: windowMock
       });
 
@@ -97,6 +96,10 @@ define(function (require, exports, module) {
       view.destroy();
 
       view = metrics = null;
+    });
+
+    it('has correct viewName property', () => {
+      assert.equal(view.viewName, 'confirm');
     });
 
     describe('render', function () {

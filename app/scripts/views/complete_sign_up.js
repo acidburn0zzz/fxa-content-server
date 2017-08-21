@@ -33,6 +33,7 @@ define(function (require, exports, module) {
   const CompleteSignUpView = BaseView.extend({
     template: CompleteSignUpTemplate,
     className: 'complete_sign_up',
+    viewName: 'complete-sign-up',
 
     initialize (options = {}) {
       this._verificationInfo = new VerificationInfo(this.getSearchParams());

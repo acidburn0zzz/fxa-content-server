@@ -724,17 +724,17 @@ define([
 
       'second call to process.stderr.write was correct': () => {
         const arg = JSON.parse(process.stderr.write.args[0][0]);
-        assert.equal(arg.event, 'flow.performance.other.network');
+        assert.equal(arg.event, 'flow.performance.settings.network');
       },
 
       'third call to process.stderr.write was correct': () => {
         const arg = JSON.parse(process.stderr.write.args[1][0]);
-        assert.equal(arg.event, 'flow.performance.other.server');
+        assert.equal(arg.event, 'flow.performance.settings.server');
       },
 
       'fourth call to process.stderr.write was correct': () => {
         const arg = JSON.parse(process.stderr.write.args[2][0]);
-        assert.equal(arg.event, 'flow.performance.other.client');
+        assert.equal(arg.event, 'flow.performance.settings.client');
       }
     },
 
@@ -745,7 +745,7 @@ define([
           events: [
             { offset: 1000, type: 'loaded' }
           ],
-          initialView: 'reset-password'
+          initialView: 'confirm'
         // The last arg here puts the navtiming events in the distant future
         }, 1000, false, 31536000000);
       },
@@ -756,7 +756,7 @@ define([
 
       'first call to process.stderr.write was correct': () => {
         const arg = JSON.parse(process.stderr.write.args[0][0]);
-        assert.equal(arg.event, 'flow.performance.other');
+        assert.equal(arg.event, 'flow.performance.polling');
       }
     },
 
@@ -767,14 +767,14 @@ define([
           events: [
             { offset: 2000, type: 'loaded' }
           ],
-          initialView: 'signin'
+          initialView: 'complete-sign-up'
         }, 2000, true);
       },
 
       'process.stderr.write was called correctly': () => {
         assert.equal(process.stderr.write.callCount, 1);
         const arg = JSON.parse(process.stderr.write.args[0][0]);
-        assert.equal(arg.event, 'flow.performance.auth');
+        assert.equal(arg.event, 'flow.performance.verify');
       }
     }
   });

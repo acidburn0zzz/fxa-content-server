@@ -23,6 +23,7 @@ define(function (require, exports, module) {
   const View = FormView.extend({
     template: Template,
     className: 'complete-reset-password',
+    viewName: 'complete-reset-password',
 
     initialize (options) {
       options = options || {};

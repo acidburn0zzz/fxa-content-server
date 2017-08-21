@@ -67,8 +67,7 @@ define(function (require, exports, module) {
         notifier: notifier,
         relier: relier,
         translator: translator,
-        user: user,
-        viewName: 'signup'
+        user: user
       };
 
       if (options.window) {
@@ -141,6 +140,10 @@ define(function (require, exports, module) {
       view = null;
 
       document.cookie = 'tooyoung=1; expires=Thu, 01-Jan-1970 00:00:01 GMT';
+    });
+
+    it('has correct viewName property', () => {
+      assert.equal(view.viewName, 'signup');
     });
 
     describe('render', function () {

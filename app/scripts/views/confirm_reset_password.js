@@ -25,6 +25,7 @@ define(function (require, exports, module) {
   const View = BaseView.extend({
     template: Template,
     className: 'confirm-reset-password',
+    viewName: 'confirm-reset-password',
 
     initialize (options = {}) {
       this._verificationPollMS =

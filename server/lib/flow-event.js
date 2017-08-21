@@ -79,6 +79,9 @@ const PERFORMANCE_TIMINGS = [
 ];
 
 const AUTH_VIEWS = new Set([ 'force-auth', 'signin', 'signup' ]);
+const SETTINGS_VIEWS = /^settings/;
+const POLLING_VIEWS = /^confirm/;
+const VERIFY_VIEWS = /^complete/;
 
 module.exports = (req, metrics, requestReceivedTime) => {
   if (IS_DISABLED || ! isValidFlowData(metrics, requestReceivedTime)) {
@@ -86,8 +89,19 @@ module.exports = (req, metrics, requestReceivedTime) => {
   }
 
   let emitPerformanceEvents = false;
+  let performanceCategory;
+  if (AUTH_VIEWS.has(metrics.initialView)) {
+    performanceCategory = 'auth';
+  } else if (SETTINGS_VIEWS.test(metrics.initialView)) {
+    performanceCategory = 'settings';
+  } else if (POLLING_VIEWS.test(metrics.initialView)) {
+    performanceCategory = 'polling';
+  } else if (VERIFY_VIEWS.test(metrics.initialView)) {
+    performanceCategory = 'verify';
+  } else {
+    performanceCategory = 'other';
+  }
   const events = metrics.events || [];
-  const performanceCategory = AUTH_VIEWS.has(metrics.initialView) ? 'auth' : 'other';
   const flowEvents = events.map(event => {
     if (event.type === 'loaded') {
       emitPerformanceEvents = true;

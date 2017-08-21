@@ -83,7 +83,6 @@ define(function (require, exports, module) {
         relier: relier,
         user: user,
         verificationPollMS: VERIFICATION_POLL_TIMEOUT_MS,
-        viewName: 'confirm_reset_password',
         window: windowMock
       });
     }
@@ -103,6 +102,10 @@ define(function (require, exports, module) {
       metrics = null;
 
       destroyView();
+    });
+
+    it('has correct viewName property', () => {
+      assert.equal(view.viewName, 'confirm-reset-password');
     });
 
     describe('render', function () {

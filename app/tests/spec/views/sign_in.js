@@ -93,10 +93,13 @@ define(function (require, exports, module) {
         relier: relier,
         translator: translator,
         user: user,
-        viewName: 'signin',
         window: windowMock
       });
     }
+
+    it('has correct viewName property', () => {
+      assert.equal(view.viewName, 'signin');
+    });
 
     describe('render', () => {
       it('prefills email and password if stored in formPrefill (user comes from signup with existing account)', () => {

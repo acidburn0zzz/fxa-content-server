@@ -74,7 +74,6 @@ define(function (require, exports, module) {
         relier: relier,
         translator: translator,
         user: user,
-        viewName: 'complete_sign_up',
         window: windowMock
       });
     }
@@ -122,6 +121,10 @@ define(function (require, exports, module) {
       view.destroy();
 
       view = windowMock = metrics = null;
+    });
+
+    it('has correct viewName property', () => {
+      assert.equal(view.viewName, 'complete-sign-up');
     });
 
     describe('getAccount', function () {

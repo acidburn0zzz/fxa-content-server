@@ -23,6 +23,7 @@ define(function (require, exports, module) {
   const View = BaseView.extend({
     template: Template,
     className: 'confirm',
+    viewName: 'confirm',
 
     initialize (options = {}) {
       // Account data is passed in from sign up and sign in flows.

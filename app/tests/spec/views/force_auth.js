@@ -80,7 +80,6 @@ define(function (require, exports, module) {
         relier: relier,
         translator: translator,
         user: user,
-        viewName: 'force-auth',
         window: windowMock
       });
 
@@ -102,6 +101,10 @@ define(function (require, exports, module) {
       view.remove();
       view.destroy();
       view = null;
+    });
+
+    it('has correct viewName property', () => {
+      assert.equal(view.viewName, 'force-auth');
     });
 
     describe('render', function () {

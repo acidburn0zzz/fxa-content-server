@@ -55,7 +55,6 @@ define(function (require, exports, module) {
         notifier: notifier,
         relier: relier,
         user: user,
-        viewName: 'complete_reset_password',
         window: windowMock
       });
     }
@@ -96,6 +95,10 @@ define(function (require, exports, module) {
       view.destroy();
 
       view = windowMock = metrics = null;
+    });
+
+    it('has correct viewName property', () => {
+      assert.equal(view.viewName, 'complete-reset-password');
     });
 
     describe('render', function () {
